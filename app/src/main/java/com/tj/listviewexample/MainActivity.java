@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.tj.listviewexample.adapters.StoreAdapter;
 import com.tj.listviewexample.datas.Store;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     List<Store> myStoreList = new ArrayList<>();
     private android.widget.ListView storeListView;
+
+    StoreAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     void setValues(){
 
         fillStores();
+
+        myAdapter = new StoreAdapter(MainActivity.this, myStoreList);
+        storeListView.setAdapter(myAdapter);
     }
 
 //     ArrayLiset 안에 가게들을 채우는 메쏘드, 연습용으로 임시로 작성.
